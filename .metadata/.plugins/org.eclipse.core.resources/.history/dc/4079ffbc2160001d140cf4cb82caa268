@@ -1,0 +1,20 @@
+package com.xworkz.interviewapp;
+
+public class PenTester {
+	
+	public static void main(String t[]) {
+		
+		Pen pen1 = new Pen("Classmate" , 4563);
+		pen1.toWrite();
+		
+		Pen pen2 = new Pen("Classmate", 5473);
+		pen2.toWrite();
+		
+		System.out.println(pen1.equals(pen2));
+		Pen pen3 = new Pen("Trimax", 6342);
+		
+		
+		
+	}
+
+}

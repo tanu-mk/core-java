@@ -1,0 +1,22 @@
+package com.xworkz.airportapp;
+
+public class Airport {
+	
+	public static void main(String t[]) {
+		
+		public Passport passport;
+		public boolean isVisaAvailable;
+		public boolean isLaguageAllowed;
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+
+}

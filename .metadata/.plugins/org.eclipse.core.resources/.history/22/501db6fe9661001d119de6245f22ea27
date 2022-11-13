@@ -1,0 +1,24 @@
+package com.xworkz.examapp;
+
+import com.xworkz.examapp.e.Exam;
+
+public class ExamTester {
+
+	
+	public static void main(String t[]) {
+		
+		String subjectNames[] = {"OS", "m1", "hd", "vlsi"};
+		
+		HallTicket hallTicket = new HallTicket("Priya","subjectNames", "18cs0007", "Dabba Vtu");
+		
+		Exam exam = new Exam();
+		exam.fees = 1200;
+		
+		exam.allow(hallTicket);
+		
+		
+		
+		
+		
+	}
+}

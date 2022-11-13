@@ -1,0 +1,14 @@
+package com.xworkz.examapp;
+
+public class CoffeeShopTester {
+	
+	public static void main(String t[]) {
+		
+		CoffeeShop shop = new CoffeeShop();
+		
+		
+		
+		
+	}
+
+}

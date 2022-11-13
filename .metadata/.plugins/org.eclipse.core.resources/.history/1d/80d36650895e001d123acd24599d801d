@@ -1,0 +1,19 @@
+package com.xworkz.inheritanceapp;
+
+public class Fruit {
+	
+	public String name;
+	public String type;
+	public String importedFrom;
+	public double price;
+	
+	public void 
+	
+	public void toProvideSufficientNutients(String ediblePart, String botanicalName ) {
+		
+	
+		
+	}
+	
+
+}

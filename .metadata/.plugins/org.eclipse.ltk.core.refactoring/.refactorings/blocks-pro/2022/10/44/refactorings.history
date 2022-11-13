@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;blocks-pro/src/com/xworkz/blocksapp/BlocksTester.java&apos; to &apos;Blocks.java&apos;" description="Rename resource &apos;BlocksTester.java&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/com/xworkz/blocksapp/BlocksTester.java" name="Blocks.java" stamp="1666772104572" updateReferences="true"/>
+</session>

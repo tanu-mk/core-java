@@ -1,0 +1,38 @@
+package com.xworkz.bankapp.bank;
+
+public class BankAccount {
+	
+	public String name;
+	public String ifscCode;
+	public String branchName;
+	public int accountNo;
+	public double balance;
+	
+	public double deposit(double  balance) {
+		
+		 this.balance = this.balance + balance;
+		 return  this.balance;
+	}
+	
+	
+	public double withDraw(double  balance) {
+		
+		this.balance = this.balance - balance;
+		return  this.balance;
+	}
+	
+	
+	public void transfer(double amount, BankAccount friendAccount) {
+		
+		System.out.println("Transferring to friends account");
+		
+		withDraw(amount);
+		friendAccount.deposit(amount);
+		
+		System.out.println("Transaction is done........transaction successfull");
+		
+		
+		
+	}
+
+}

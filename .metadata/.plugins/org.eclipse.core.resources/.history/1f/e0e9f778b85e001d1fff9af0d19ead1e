@@ -1,0 +1,14 @@
+package com.xworkz.inheritanceapp;
+
+import com.xworkz.inheritanceapp.Base.TouristPlace;
+
+public class TouristPlaceTester {
+	
+	public static void main(String t[]) {
+		
+		TouristPlace place = newTouristPlace
+		
+		
+	}
+
+}

@@ -1,0 +1,30 @@
+package com.xworkz.examapp.e;
+
+public class HallTicket {
+	
+	String candidateName;
+	String subjectNames[];
+	String usnNo;
+	String universityName;
+	
+	public void displayDetails() {
+		
+		System.out.println("Candidate name is: "+ this.candidateName);
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

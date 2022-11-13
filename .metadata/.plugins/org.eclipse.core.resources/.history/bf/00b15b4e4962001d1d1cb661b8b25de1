@@ -1,0 +1,30 @@
+package com.xworkz.hospitalapp;
+
+import com.xworkz.hospitalapp.hospital.Hospital;
+import com.xworkz.hospitalapp.patient.Patient;
+
+public class HospitalTester {
+	
+	public static void main(String t[]) {
+		
+		Patient patient = new Patient("Chaya", "Marathahalli", "Female", 25);
+		
+		
+		Hospital hospital = new Hospital();
+		boolean isEmergency = hospital.admit(patient);
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+
+}

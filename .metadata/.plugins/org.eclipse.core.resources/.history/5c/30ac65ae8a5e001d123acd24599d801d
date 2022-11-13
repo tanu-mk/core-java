@@ -1,0 +1,13 @@
+package com.xworkz.inheritanceapp;
+
+public class FruitTester {
+	
+	public static void main(String t[]) {
+		
+		Fruit frt = new Fruit();
+		frt.toProvideEnergy("Mango", "Drupe");
+		/*frt.toProvideSufficientNutients("Mesocarp", "Mangifera indica");*/
+		
+	}
+
+}

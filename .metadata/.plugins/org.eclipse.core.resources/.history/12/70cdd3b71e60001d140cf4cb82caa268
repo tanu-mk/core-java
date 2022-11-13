@@ -1,0 +1,22 @@
+package com.xworkz.interviewapp;
+
+public class Name {
+	
+	public static void main(String t[]) {
+	
+	 int id;
+	 String modeName;
+	 int price;
+	 String storageCapacity;
+	 
+	 if()
+	
+	
+	
+	
+	
+	
+	
+	}
+
+}

@@ -1,0 +1,59 @@
+package com.xworkz.airportapp;
+
+public class Airport {
+	
+	public static void main(String t[]) {
+		
+		  Passport passport;
+		  boolean isPassportAvailable;
+		  boolean isVisaAvailable;
+		
+		public boolean travel(Passport passport) {
+			
+			boolean isAllowed = false;
+			
+			System.out.println("Inside travel method ");
+			
+			if(isVisaAvailable == true) {
+				
+				if(isPassportAvailable) {
+					
+					this.passport = passport;
+					
+					System.out.println("Candidate informtion are:");
+						this.passport.displayInfo();
+					
+				}
+				else {
+					
+					System.out.println("Passport beke beku.....ella andre heg allow madake haguthe");
+				}	
+			}
+			
+			else {
+				
+				System.out.println("Allow madalla visa bandmelle bane.....evag maneg hoge");
+			}
+				
+			return isAllowed;
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		}
+		
+		
+		
+	}
+		
+		
+		
+		
+	}
+
+

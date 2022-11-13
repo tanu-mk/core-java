@@ -1,0 +1,55 @@
+package com.xworkz.airportapp;
+
+public class Airport {
+	
+	public static void main(String t[]) {
+		
+		public Passport passport;
+		public boolean isVisaAvailable;
+		public boolean isLaguageAllowed;
+		
+		public void travel(Passport passport) {
+			
+			boolean isAllowed = false;
+			
+			if(isVisaAvailable == true) {
+				
+				if(is) {
+					
+					
+				}
+				
+				else {
+					
+					
+				}
+			}
+			else {
+				
+				System.out.println("Nim na allow madalla maneg hoge......rest madhe");
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+
+}

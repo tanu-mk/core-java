@@ -1,0 +1,28 @@
+package com.xworkz.examapp.e;
+
+public class CoffeeShop {
+	
+	public Coffee coffee;
+	public String type;
+	
+	public boolean filter(Coffee coffee) {
+		
+		boolean isFiltered= false;
+		
+		System.out.println(" Inside filter method");
+		
+		System.out.println("Coffee is " + type);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+	
+	
+
+}

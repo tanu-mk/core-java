@@ -1,0 +1,8 @@
+package com.xworkz.examapp.e;
+
+public class CoffeeShop {
+	
+	Coffee coffee;
+	
+
+}

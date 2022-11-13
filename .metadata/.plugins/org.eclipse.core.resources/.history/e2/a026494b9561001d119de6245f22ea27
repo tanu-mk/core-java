@@ -1,0 +1,30 @@
+package com.xworkz.examapp.e;
+
+public class Exam {
+	
+	public HallTicket hallTicket;
+	public int fees;
+	
+	public boolean allow(HallTicket hallTicket) {
+		
+		boolean isAllowed = false;
+		
+		System.out.println("Inside allow method");
+		
+		System.out.println("fees pais is "+ this.fees);
+		if(fees >= 1200) {
+			System.out.println("fees is paid");
+			
+			
+			
+			
+		}
+		
+		
+		
+		
+		
+		
+	}
+
+}

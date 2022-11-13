@@ -1,0 +1,16 @@
+package com.xworkz.inheritanceapp;
+
+import com.xworkz.inheritanceapp.Base.BusStop;
+
+public class BusStopTester {
+	
+	public static void main(String t[]) {
+		
+		BusStop bus = new BusStop();
+		bus.forOnbardingBus("Vivekananda", "Brigade");
+		
+		BusStop bus = new BusStop();
+		bus.forOnbardingBus("Devegowda", "BTM");
+	}
+
+}

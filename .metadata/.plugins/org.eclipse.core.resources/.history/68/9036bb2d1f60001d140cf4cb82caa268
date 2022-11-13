@@ -1,0 +1,28 @@
+package com.xworkz.interviewapp;
+
+public class Speaker {
+	
+	public String name;
+	public int price;
+	public boolean isconnected;
+	
+	public boolean isOnOrOff() {
+		
+		
+		
+		
+	}
+	
+	
+	
+	 
+	
+	
+	
+	
+	
+	
+	
+	}
+
+}

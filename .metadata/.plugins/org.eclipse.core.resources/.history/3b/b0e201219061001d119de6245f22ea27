@@ -1,0 +1,23 @@
+package com.xworkz.examapp.e;
+
+public class HallTicket {
+	
+	String candidateName;
+	String subjectNames[];
+	String usnNo;
+	String universityName;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

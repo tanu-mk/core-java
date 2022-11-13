@@ -1,0 +1,43 @@
+package com.xworkz.bankapp;
+
+import com.xworkz.bankapp.bank.BankAccount;
+import com.xworkz.bankapp.saving.SavingsAccount;
+
+public class BankAccountTester {
+	
+	public static void main(String t[]) {
+		
+		BankAccount account = new BankAccount();
+		account.deposit(5000);
+		System.out.println("My account balance is " + account.balance);
+		
+		BankAccount friendAccount = new BankAccount();
+		friendAccount.deposit(700);
+		System.out.println("Friend account balance is " + friendAccount.balance);
+		
+		account.transfer(500.0, friendAccount);
+		
+		System.out.println("My account balance is " + account.balance);
+		
+		System.out.println("Friend account balance is " + friendAccount.balance);
+		
+		System.out.println("********************************************************************");
+		
+		
+		SavingsAccount savingsAccount = new SavingsAccount();
+		savingsAccount.deposit(3000);
+		
+		System.out.println("Savings account balance is "+ savingsAccount.balance);
+		
+		savingsAccount.withDraw(1000);
+		
+		System.out.println("Savings account balance is "+ savingsAccount.balance);
+		
+		
+		
+		
+		
+		
+	}
+
+}

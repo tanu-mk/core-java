@@ -1,0 +1,16 @@
+package com.xworkz.hospitalapp.patient;
+
+public class Patient {
+	
+	public String patientName;
+	public String address;
+	public String gender;
+	
+	public Patient(String patientName, String address, String gender) {
+		
+		this.patientName = patientName;
+		this.address = address;
+		this.gender = gender;
+	}
+
+}

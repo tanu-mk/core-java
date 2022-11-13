@@ -1,0 +1,43 @@
+package com.xworkz.airportapp;
+
+public class Airport {
+	
+	public static void main(String t[]) {
+		
+		   Passport passport;
+		  boolean isVisaAvailable;
+		  boolean laguage;
+		
+		public void travel(Passport passport) {
+			
+			boolean isAllowed = false;
+			
+			System.out.println("Inside travel method ");
+			
+			if(isVisaAvailable == true) {
+				
+				
+			}
+				
+							
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		}
+		
+		
+		
+	}
+		
+		
+		
+		
+	}
+
+

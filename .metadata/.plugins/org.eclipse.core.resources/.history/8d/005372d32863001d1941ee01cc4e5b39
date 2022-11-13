@@ -1,0 +1,59 @@
+package com.xworkz.airportapp;
+
+public class Airport {
+	
+	public static void main(String t[]) {
+		
+		public Passport passport;
+		public boolean isVisaAvailable;
+		public boolean isLaguageAllowed;
+		
+		public void travel(Passport passport) {
+			
+			boolean isAllowed = false;
+			
+			if(isVisaAvailable == true) {
+				
+				if(isLaguageAllowed <= 32) {
+					this.passport = passport;
+					this.passport.displayInfo();
+					
+					System.out.println("Is allowed to travel");
+					
+				}
+				
+				else {
+					
+					System.out.println("Not allowed to travel as the Laguage weight extends the actual weight");				}
+			}
+			else {
+				
+				System.out.println("Nim na allow madalla maneg hoge......rest madhe");
+			}
+			
+			return isAllowed;
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+
+}

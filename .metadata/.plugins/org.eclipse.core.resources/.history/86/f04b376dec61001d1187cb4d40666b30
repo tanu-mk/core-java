@@ -1,0 +1,10 @@
+package com.xworkz.examapp.e;
+
+public class CoffeeShop {
+	
+	public Coffee coffee;
+	public String type;
+	
+	
+
+}

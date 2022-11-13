@@ -1,0 +1,21 @@
+package com.xworkz.examapp;
+
+import com.xworkz.examapp.e.CoffeeShop;
+
+public class CoffeeShopTester {
+	
+	public static void main(String t[]) {
+		
+		CoffeeShop shop = new CoffeeShop();
+		shop.type = "Filtered";
+		
+		
+		String coffeeNames[] = {"Cold Brew Coffee", "Butter Beans", "Cafe Royal", "Cafe Robusta"}
+;		Coffee cfe = new Coffee("Nestle", coffeeNames);
+		
+		
+		
+		
+	}
+
+}

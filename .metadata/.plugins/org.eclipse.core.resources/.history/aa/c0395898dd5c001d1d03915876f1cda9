@@ -1,0 +1,11 @@
+package com.xworkz.interviewapp;
+
+public class Twin {
+	
+	public static boolean isTwin(String a, String b) {
+	if(a.length() != b.length() ) 
+	{	
+	return false;
+	}
+}
+}

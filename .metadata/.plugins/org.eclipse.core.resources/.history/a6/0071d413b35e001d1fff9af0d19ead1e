@@ -1,0 +1,7 @@
+package com.xworkz.inheritanceapp;
+
+import com.xworkz.inheritanceapp.Base.Vegetable;
+
+public class Onion extends Vegetable{
+
+}

@@ -1,0 +1,32 @@
+package com.xworkz.interviewapp;
+
+public class Pen {
+	
+	public String name;
+	public int id;
+	
+	Pen pen1 = new Pen();
+	
+	
+	Pen pen2 = new Pen();
+	
+	
+	Pen pen3 = new Pen();
+	
+	
+}
+	
+	
+	
+	
+	 
+	
+	
+	
+	
+	
+	
+	
+	
+
+

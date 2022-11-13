@@ -1,0 +1,38 @@
+package com.xworkz.interviewapp;
+
+public class Speaker {
+	
+	public String name;
+	public int price;
+	public boolean isConnected;
+	
+	public boolean isOnOrOff() {
+		
+		if(isConnected == false) {
+			isConnected = true;
+			System.out.println("Speaker is On ");
+		}
+		
+		else if() {
+			
+			
+		}
+		
+		
+		
+		
+	}
+	
+	
+	
+	 
+	
+	
+	
+	
+	
+	
+	
+	}
+
+}

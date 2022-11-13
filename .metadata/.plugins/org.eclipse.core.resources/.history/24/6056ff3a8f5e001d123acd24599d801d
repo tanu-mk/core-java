@@ -1,0 +1,18 @@
+package com.xworkz.inheritanceapp;
+
+public class ElectronicDeviceTester {
+	
+	public static void main(String t[]) {
+		
+		ElectronicDevice ed = new ElectronicDevice();
+		ed.takingPhotos();
+		
+		ed.forRecording("Camera");
+		
+		
+		
+		
+		
+	}
+
+}

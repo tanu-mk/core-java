@@ -1,17 +1,17 @@
 package com.xworkz.encapsulationapp;
 
-import com.xworkz.encapsulationapp.classfiles.AquariumDTO;
+import com.xworkz.encapsulationapp.classfiles.AquariumDto;
 
 public class AquariumTester {
 	
 	public static void main(String t[]) {
 		
-		AquariumDTO aqua = new AquariumDTO();
-		aqua.setPlaceName("UnderWater Aqua World");
-		System.out.println(aqua.getPlaceName());
+		AquariumDto aqua = new AquariumDto();
 		
-		aqua.setNoOfFishTypes(87);
-		System.out.println(aqua.getNoOfFishTypes());
-	}
-
+		aqua.setPlaceName("Underwater Aqua World");
+		aqua.setNoOfFishTypes(78);
+		aqua.setDesignMaterial( "Acrylic");
+		aqua.setStyles("Biotope");
+		
+}
 }

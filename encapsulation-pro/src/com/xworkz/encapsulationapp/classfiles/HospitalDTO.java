@@ -1,24 +1,17 @@
 package com.xworkz.encapsulationapp.classfiles;
 
-public class HospitalDTO {
+import lombok.Setter;
+
+@Setter
+
+public class HospitalDto {
 	
 	private int id;
 	private String name;
+	private String address;
+	private int noOfBranches;
+	private int noOfDoctorsPresent;
 	
-	public void setHospitalId(int id) {
-		this.id = id;
-	}
 	
-	public int getHospitalId() {
-		return id;
-	}
-	
-	public void setHospitalName(String name) {
-		this.name = name;
-	}
-	
-	public String getHospitalName() {
-		return name;
-	}
 	
 }

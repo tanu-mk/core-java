@@ -1,18 +1,18 @@
 package com.xworkz.encapsulationapp;
 
-import com.xworkz.encapsulationapp.classfiles.FlowerDTO;
+import com.xworkz.encapsulationapp.classfiles.FlowerDto;
 
 public class FlowerTester {
 	
 	public static void main(String t[]) {
 		
-		FlowerDTO flower = new FlowerDTO();
-		flower.setFlowerName("Orchids");
-		System.out.println(flower.getFlowerName());
+		FlowerDto flower = new FlowerDto();
 		
-		flower.setFlowerColor("Lightish Purple");
-		System.out.println(flower.getFlowerColor());		
-		
+		flower.setName("Orchids");
+		flower.setColor("Purple");
+		flower.setPrice(380);
+		flower.setSymbolism("Innocence");
+		flower.setHumanUse("Decoration Purpose");
 	}
 
 }

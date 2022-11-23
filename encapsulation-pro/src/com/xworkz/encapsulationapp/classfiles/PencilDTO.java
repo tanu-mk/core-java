@@ -1,25 +1,14 @@
 package com.xworkz.encapsulationapp.classfiles;
 
-public class PencilDTO {
+import lombok.Setter;
+
+@Setter
+
+public class PencilDto {
 	
 	private int id;
 	private String name;
+	private String type;
+	private String use;
 	
-	public void setPencilId(int id) {
-		this.id = id;
-	}
-	
-	public int getPencilId() {
-		
-		return id;
-	}
-	
-	public void setPencilName(String name) {
-		this.name = name;
-	}
-	
-	public String getPencilName() {
-		
-		return name;
-	}
 	}

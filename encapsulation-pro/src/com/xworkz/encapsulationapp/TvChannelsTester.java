@@ -1,17 +1,17 @@
 package com.xworkz.encapsulationapp;
 
-import com.xworkz.encapsulationapp.classfiles.TvChannelsDTO;
+import com.xworkz.encapsulationapp.classfiles.TvChannelsDto;
 
 public class TvChannelsTester {
 	
 	public static void main(String t[]) {
 		
-		TvChannelsDTO tv = new TvChannelsDTO();
+		TvChannelsDto tv = new TvChannelsDto();
 		tv.setNoOfKannadaChannels(75);
-		System.out.println(tv.getNoOfKannadaChannels());
-		
 		tv.setTotalNoOfChannels(398);
-		System.out.println(tv.getTotalNoOfChannels());
+		tv.setChannelPrice(45);
+		tv.setChannelName("Star Sports 2");
+		
 		
 		
 	}

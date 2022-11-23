@@ -1,19 +1,17 @@
 package com.xworkz.encapsulationapp;
 
-import com.xworkz.encapsulationapp.classfiles.PencilDTO;
+import com.xworkz.encapsulationapp.classfiles.PencilDto;
 
 public class PencilTester {
 	
 	public static void main(String t[]) {
 		
-		PencilDTO pencil = new PencilDTO();
-		pencil.setPencilId(4723);
-		System.out.println(pencil.getPencilId());
+		PencilDto pencil = new PencilDto();
 		
-		pencil.setPencilName("Apsara");
-		System.out.println(pencil.getPencilName());
-		
-		
+		pencil.setId(6492);
+		pencil.setName("Apsara");
+		pencil.setType("Painted Body");
+		pencil.setUse("Writting and Drawing");
 	}
 	
 

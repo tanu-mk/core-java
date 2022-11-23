@@ -1,18 +1,18 @@
 package com.xworkz.encapsulationapp;
 
-import com.xworkz.encapsulationapp.classfiles.HospitalDTO;
+import com.xworkz.encapsulationapp.classfiles.HospitalDto;
 
 public class HospitalTester {
 	
 	public static void main(String t[]) {
 		
-	HospitalDTO hospital = new HospitalDTO();
-	hospital.setHospitalId(637);
-	System.out.println(hospital.getHospitalId());
+	HospitalDto hospital = new HospitalDto();
 	
-	hospital.setHospitalName("People Tree");
-	System.out.println(hospital.getHospitalName());
-	
+	hospital.setName("Manipal Hospital");
+	hospital.setId(8439);
+	hospital.setAddress("Domlur");
+	hospital.setNoOfBranches(4);
+	hospital.setNoOfDoctorsPresent(287);
 	
 	}
-	}
+}

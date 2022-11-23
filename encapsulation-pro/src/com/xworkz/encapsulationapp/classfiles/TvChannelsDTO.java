@@ -1,25 +1,15 @@
 package com.xworkz.encapsulationapp.classfiles;
 
-public class TvChannelsDTO {
+import lombok.Setter;
 
-		int noOfKannadaChannels;
-		int totalNoOfChannels;
+@Setter
+
+public class TvChannelsDto {
+
+		private int noOfKannadaChannels;
+		private int totalNoOfChannels;
+		private String channelName;
+		private int channelPrice;
 		
-		public void setNoOfKannadaChannels(int noOfKannadaChannels) {
-			this.noOfKannadaChannels = noOfKannadaChannels;
-		}
 		
-		public int getNoOfKannadaChannels() {
-			
-			return noOfKannadaChannels;
-		}
-		
-		public void setTotalNoOfChannels(int totalNoOfChannels) {
-			this.totalNoOfChannels = totalNoOfChannels;
-		}
-		
-		public int getTotalNoOfChannels() {
-			
-			return totalNoOfChannels;
-		}
 }

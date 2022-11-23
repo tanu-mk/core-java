@@ -1,21 +1,21 @@
 package com.xworkz.encapsulationapp;
 
-import com.xworkz.encapsulationapp.classfiles.ChocolateDTO;
+import com.xworkz.encapsulationapp.classfiles.ChocolateDto;
 
 public class ChocolateTester {
 	
 	public static void main(String t[]) {
 		
-		ChocolateDTO choco = new ChocolateDTO();
-		choco.setChocolateId(84765);
-		System.out.println(choco.getChocolateId());
-		
-		choco.setChocolateName("Ferori");
-		System.out.println(choco.getChocolateName());
-		
-		
-		
-		
+		ChocolateDto choco = new ChocolateDto();
+	
+		choco.setName("Ferrero Rocher");
+		choco.setType("Dark chocolate");
+		choco.setId(68235);
+		choco.setPrice(285);
+		choco.setRawMaterial("cacao seed");
+	
+	
+	
+	
 	}
-
 }

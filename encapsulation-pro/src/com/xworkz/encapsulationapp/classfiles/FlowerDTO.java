@@ -1,26 +1,16 @@
 package com.xworkz.encapsulationapp.classfiles;
 
-public class FlowerDTO {
+import lombok.Setter;
+
+@Setter
+
+public class FlowerDto {
 	
 	private String name;
 	private String color;
+	private int price;
+	private String symbolism;
+	private String humanUse;
 	
-	public void setFlowerName(String name) {
-		this.name = name;
-	}
 	
-	public String getFlowerName() {
-		
-		return name;
-	}
-	
-	public void setFlowerColor(String color) {
-		this.color = color;
-	}
-	
-	public String getFlowerColor() {
-		
-		return color;
-	}
-
 }

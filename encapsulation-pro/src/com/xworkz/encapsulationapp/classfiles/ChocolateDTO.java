@@ -1,26 +1,15 @@
 package com.xworkz.encapsulationapp.classfiles;
 
-public class ChocolateDTO {
+import lombok.Setter;
+
+@Setter
+
+public class ChocolateDto {
 	
 	private int id;
 	private String name;
+	private int price;
+	private String rawMaterial;
+	private String type;
 	
-	public void setChocolateId(int id) {
-		this.id = id;
-	}
-	
-	public int getChocolateId() {
-		
-		return id;
-	}
-	
-	public void setChocolateName(String name) {
-		this.name = name;
-	}
-	
-	public String getChocolateName() {
-		
-		return name;
-	}
-
 }

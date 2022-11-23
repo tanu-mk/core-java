@@ -1,26 +1,16 @@
 package com.xworkz.encapsulationapp.classfiles;
 
-public class BakeryDTO {
+import lombok.Setter;
+
+@Setter
+
+public class BakeryDto {
 	
 	private String name;
 	private String place;
+	private String product;
+	private int gstin;
 	
-	public void setBakeryName(String name) {
-		this.name = name;
-	}
 	
-	public String getBakeryName() {
-		
-		return name;
-	}
 	
-	public void setBakeryPlace(String place) {
-		this.place = place;
-	}
-	
-	public String getBakeryPlace() {
-		
-		return place;
-	}
-
 }

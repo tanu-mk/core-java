@@ -2,9 +2,8 @@ package com.xworkz.damapp;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Set;
+
 
 public class Dam {
 	
@@ -243,16 +242,83 @@ public class Dam {
 		System.out.println("=============================================");
 		
 		
+		Iterator<String> lower = allStateDams.iterator();
+		while(lower.hasNext()) {
+			String str4 = lower.next();
+			String str5 = str4.toLowerCase();
+			System.out.println(str5);
+		}
+		
+		
+		System.out.println("=============================================");
+		
+		Iterator<String> upper = allStateDams.iterator();
+		while(upper.hasNext()) {
+			String str6 = upper.next();
+			String str7 = str6.toUpperCase();
+			System.out.println(str7);
+		}
+		
+		System.out.println("=============================================");
+		
+		Iterator<String> dams4 = allStateDams.iterator();
+		int count = 0;
+		while(dams4.hasNext()) {
+			String ele = dams4.next();
+			int value1 = ele.length();
+				if(value1 >= 15) {
+					System.out.println( ele.length());
+					count++;
+				}
+				
+		}
+		System.out.println("total number of dams greater than 15 character :" + count);
+		
+		
+		System.out.println("=============================================");
+		
+		
+		
+		System.out.println("After Removing names starting with P");
+		
+		System.out.println("The size before removing is: " + allStateDams.size());
+		
+		
+		
+		Iterator<String> dams5 = allStateDams.iterator();
+		while(dams5.hasNext()) {
+			String data = dams5.next();
+			if(data.contains("P")) {
+				dams5.remove();
+				System.out.println(data);
+				
+				
+			}
+		}
+		System.out.println("The size after removing is: " + allStateDams.size());
+		
+		
+		System.out.println("=============================================");
+		
+		Iterator<String> dams7 = allStateDams.iterator();
+		String a, b;
+		while(dams7.hasNext()) {
+			String value = dams7.next();
+			 a = value;
+			StringBuilder builder = new StringBuilder(value);
+		     	b = builder.reverse().toString();
+		    
+		    if(a.equals(b)) {
+		    	System.out.println("The String is pallindrome");
+		    }
+		   
+		  }
+			
+		System.out.println("The String is not pallindrome");
 		
 		
 		
 		
-		
-		
-		
-		
-		
-		
+		}
 	}
 
-}

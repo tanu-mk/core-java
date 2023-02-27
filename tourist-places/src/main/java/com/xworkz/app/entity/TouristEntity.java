@@ -1,0 +1,40 @@
+package com.xworkz.app.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import lombok.Data;
+
+@Data
+@Entity
+@Table(name = "egg.tourist_info")
+public class TouristEntity {
+	
+	@Id
+	@Column(name = "tourist_id")
+	private int id;
+	
+	@Column(name = "tourist_destination")
+	private String destination;
+	
+	@Column(name = "tourist_kilometers")
+	private Double kilometers;
+	
+	@Column(name = "tourist_state")
+	private String state;
+	
+	@Column(name = "tourist_famousFor")
+	private String famousFor;
+	
+	@Column(name = "tourist_bestTimeToVisit")
+	private String bestTimeToVisit;
+	
+	
+	
+	
+	
+	
+
+}

@@ -2,7 +2,12 @@ package com.xworkz.app.repository;
 
 import java.util.Collections;
 import java.util.List;
+
+import com.xworkz.app.controller.TouristController;
 import com.xworkz.app.entity.TouristEntity;
+
+import lombok.extern.slf4j.Slf4j;
+
 
 public interface TouristRepo {
 	

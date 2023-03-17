@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>X-workz</title>
+<title> X-workz </title>
 
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -20,32 +19,30 @@
 
 </head>
 
-
 <body>
 
-	<nav class="navbar navbar-light bg-dark">
+<nav class="navbar navbar-light bg-dark">
 		<div class="container-fluid">
 			<a class="navbar-brand"><img
 				src="https://x-workz.in/static/media/Logo.cf195593dc1b3f921369.png"
 				alt="" width="80" height="48" class="d-inline-block align-text-top"></a>
 
-				<a href="myWish"> Tourist </a> 
-				
-				<br>
-				
-				<a href="searchByDestinationName.jsp"> SearchByDestinationName </a>
-				
-				<a href = "findByAll.jsp"> FindByAll</a>
-				
-				<a href = "findByDestinationAndState.jsp"> FindByTwoProperties </a>
-				
-				<a href = "uploadImage.jsp"> Upload Image </a>
-				
-				<a href = "downloadImage.jsp"> Download Image </a>
-
+				<a href="index.jsp"> Home </a> 
 		</div>
 
 	</nav>
+	
+	<h3> Display Image Test</h3>
+	
+	<img src = "download?fileName=tibet.jpg"  height = "200" width = "400"/>
+	
+	<img src = "download?fileName=goa.jpg"  height = "200" width = "400"/>
+	
+	<form action = "download" method = "get" enctype = "multipart/form-data">
+	
+	
+	</form>
 
 </body>
+</html>
 </html>

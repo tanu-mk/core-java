@@ -11,10 +11,14 @@ import javax.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.xworkz.app.controller.TouristController;
 import com.xworkz.app.entity.TouristEntity;
+
+import lombok.extern.slf4j.Slf4j;
 
 
 @Repository
+@Slf4j
 public class TouristRepoImpl implements  TouristRepo {
 	
 	@Autowired
@@ -22,13 +26,13 @@ public class TouristRepoImpl implements  TouristRepo {
 	
 	
 	public TouristRepoImpl() {
-		System.out.println("Created " + this.getClass().getSimpleName());
+		log.info("Created " + this.getClass().getSimpleName());
 	}
 	
 	
 	@Override
 	public boolean save(TouristEntity entity) {
-		System.out.println("Running save in Repository");
+		log.info("Running save in Repository");
 		
 		EntityManager em = this.entityManagerFactory.createEntityManager();
 		EntityTransaction et = em.getTransaction();
@@ -42,7 +46,7 @@ public class TouristRepoImpl implements  TouristRepo {
 
 	@Override
 	public TouristEntity findById(int id) {
-		System.out.println("Find by id repo impli " + id);
+		log.info("Find by id repo impli " + id);
 		EntityManager manager = this.entityManagerFactory.createEntityManager();
 		TouristEntity fromDB = manager.find(TouristEntity.class, id);
 		manager.close();
@@ -60,7 +64,7 @@ public class TouristRepoImpl implements  TouristRepo {
 			Query query = manager.createNamedQuery("findByDestination");
 			query.setParameter("d", destination);
 			List<TouristEntity> list = query.getResultList();
-			System.out.println("Total list found in repo " + list.size());
+			log.info("Total list found in repo " + list.size());
 			
 			return list;
 		}finally {
@@ -72,7 +76,7 @@ public class TouristRepoImpl implements  TouristRepo {
 
 	@Override
 	public boolean update(TouristEntity entity) {
-		System.out.println("Running save in Repository");
+		log.info("Running save in Repository");
 		
 		EntityManager em = this.entityManagerFactory.createEntityManager();
 		

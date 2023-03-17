@@ -18,14 +18,17 @@ import com.xworkz.app.dto.TouristPlacesDto;
 import com.xworkz.app.entity.TouristEntity;
 import com.xworkz.app.repository.TouristRepo;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class TouristServiceImpl implements TouristService {
 
 	@Autowired
 	private TouristRepo touristRepo;
 
 	public TouristServiceImpl() {
-		System.out.println("Created " + this.getClass().getSimpleName());
+		log.info("Created " + this.getClass().getSimpleName());
 	}
 
 	@Override
@@ -38,7 +41,7 @@ public class TouristServiceImpl implements TouristService {
 			System.err.println("Violation in dto " + dto);
 			return violations;
 		} else {
-			System.out.println("Violation is not There in dto, can Save the data");
+			log.info("Violation is not There in dto, can Save the data");
 
 			TouristEntity entity = new TouristEntity();
 			entity.setId(dto.getId());
@@ -49,7 +52,7 @@ public class TouristServiceImpl implements TouristService {
 			entity.setBestTimeToVisit(dto.getBestTimeToVisit());
 
 			boolean saved = this.touristRepo.save(entity);
-			System.out.println("Entity Data is Saved " + saved);
+			log.info("Entity Data is Saved " + saved);
 
 			return Collections.emptySet();
 		}
@@ -63,7 +66,7 @@ public class TouristServiceImpl implements TouristService {
 			TouristEntity entity = this.touristRepo.findById(id);
 
 			if (entity != null) {
-				System.out.println("Entity is found in service for id " + id);
+				log.info("Entity is found in service for id " + id);
 				TouristPlacesDto dto = new TouristPlacesDto();
 				dto.setId(entity.getId());
 				dto.setDestination(entity.getDestination());
@@ -83,10 +86,10 @@ public class TouristServiceImpl implements TouristService {
 	@Override
 	public List<TouristPlacesDto> findByDestination(String destination) {
 		
-		System.out.println("Running findByDestination in service Impl " + destination);
+		log.info("Running findByDestination in service Impl " + destination);
 		
 		if(destination != null && !destination.isEmpty()) {
-			System.out.println("Destination data is valid");
+			log.info("Destination data is valid");
 			
 			List<TouristEntity> entities = this.touristRepo.findByDestination(destination);
 			
@@ -103,11 +106,11 @@ public class TouristServiceImpl implements TouristService {
 				
 				listOfDto.add(dto);
 			}
-			System.out.println("Size of dtos " + listOfDto.size());
-			System.out.println("size of entities " + entities.size());
+			log.info("Size of dtos " + listOfDto.size());
+			log.info("size of entities " + entities.size());
 			return listOfDto;
 		}else {
-			System.out.println("Destination data is invalid");
+			log.info("Destination data is invalid");
 		}
 		return TouristService.super.findByDestination(destination);
 	}
@@ -125,7 +128,7 @@ public class TouristServiceImpl implements TouristService {
 			System.err.println("Violation in dto " + dto);
 			return violations;
 		} else {
-			System.out.println("Violation is not There in dto, can Save the data");
+			log.info("Violation is not There in dto, can Save the data");
 
 			TouristEntity entity = new TouristEntity();
 			entity.setId(dto.getId());
@@ -136,7 +139,7 @@ public class TouristServiceImpl implements TouristService {
 			entity.setBestTimeToVisit(dto.getBestTimeToVisit());
 
 			boolean update = this.touristRepo.update(entity);
-			System.out.println("Entity Data is Saved " + update);
+			log.info("Entity Data is Saved " + update);
 
 			return Collections.emptySet();
 		}
@@ -145,7 +148,7 @@ public class TouristServiceImpl implements TouristService {
 
 	@Override
 	public boolean delete(int id) {
-		System.out.println("Running in delete by id in service");
+		log.info("Running in delete by id in service");
 		if(id>0) {
 			this.touristRepo.delete(id);
 		}
@@ -156,22 +159,22 @@ public class TouristServiceImpl implements TouristService {
 	
 	@Override
 	public List<TouristPlacesDto> findByAll() {
-		System.out.println("findByAll in service...");
+		log.info("findByAll in service...");
 		
 		List<TouristEntity> list = this.touristRepo.findByAll();
 		List<TouristPlacesDto> dtos = new ArrayList<TouristPlacesDto>();
-		if(list != null && list.isEmpty()) {
+		if(list != null ) {
 			for(TouristEntity entity : list) {
 				TouristPlacesDto dto = new TouristPlacesDto();
 				BeanUtils.copyProperties(entity, dto);
 				dtos.add(dto);
 			}
-			System.out.println("size of dtos " + dtos.size());
-			System.out.println("Size of entities " + list.size());
+			log.info("size of dtos " + dtos.size());
+			log.info("Size of entities " + list.size());
 			return dtos;
 		}
 		else {
-			System.out.println("No data found in db");
+			log.info("No data found in db");
 			return Collections.emptyList();
 		}	
 	}
@@ -180,23 +183,23 @@ public class TouristServiceImpl implements TouristService {
 	@Override
 	public List<TouristPlacesDto> findByDestinationAndState(String destination, String state) {
 		
-		System.out.println("findByDestinationAndState in service...");
+		log.info("findByDestinationAndState in service...");
 		
 		List<TouristEntity> list = this.touristRepo.findByDestinationAndState(destination, state);
 		
 		List<TouristPlacesDto> dtos = new ArrayList<TouristPlacesDto>();
-		if(list != null && list.isEmpty() || state != null && state.isEmpty() ) {
+		if(list != null  || state != null  ) {
 			for(TouristEntity entity : list) {
 				TouristPlacesDto dto = new TouristPlacesDto();
 				BeanUtils.copyProperties(entity, dto);
 				dtos.add(dto);
 			}
-			System.out.println("size of dtos " + dtos.size());
-			System.out.println("Size of entities " + list.size());
+			log.info("size of dtos " + dtos.size());
+			log.info("Size of entities " + list.size());
 			return dtos;
 		}
 		else {
-			System.out.println("No data found in db");
+			log.info("No data found in db");
 			return Collections.emptyList();
 		}	
 		

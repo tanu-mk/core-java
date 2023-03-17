@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -23,29 +23,29 @@
 
 <body>
 
-	<nav class="navbar navbar-light bg-dark">
+<nav class="navbar navbar-light bg-dark">
 		<div class="container-fluid">
 			<a class="navbar-brand"><img
 				src="https://x-workz.in/static/media/Logo.cf195593dc1b3f921369.png"
 				alt="" width="80" height="48" class="d-inline-block align-text-top"></a>
 
-				<a href="myWish"> Tourist </a> 
-				
-				<br>
-				
-				<a href="searchByDestinationName.jsp"> SearchByDestinationName </a>
-				
-				<a href = "findByAll.jsp"> FindByAll</a>
-				
-				<a href = "findByDestinationAndState.jsp"> FindByTwoProperties </a>
-				
-				<a href = "uploadImage.jsp"> Upload Image </a>
-				
-				<a href = "downloadImage.jsp"> Download Image </a>
-
+				<a href="index.jsp"> Home </a> 
 		</div>
 
 	</nav>
+	
+	<h3> Upload Image Test</h3>
+	
+	<h3 style = "color: green;"> ${successMessage} </h3>
+	<h3 style = "color: red;"> ${errorMessage} </h3>
+	
+	
+	
+	<form action = "upload" method = "post" enctype = "multipart/form-data">
+	Upload : <input type = "file" name = "pic"/>
+	<input type = "submit" value = "Upload"/>
+	
+	</form>
 
 </body>
 </html>

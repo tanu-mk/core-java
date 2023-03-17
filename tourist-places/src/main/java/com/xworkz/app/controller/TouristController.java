@@ -17,10 +17,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.xworkz.app.dto.TouristPlacesDto;
 import com.xworkz.app.service.TouristService;
 
-
+import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @RequestMapping("/")
+@Slf4j
 public class TouristController {
 	
 	
@@ -33,12 +34,13 @@ public class TouristController {
 	
 	
 	public TouristController() {
-		System.out.println("Created " + this.getClass().getSimpleName());
+		log.info("Created " + this.getClass().getSimpleName());
 	}
 	
 	@GetMapping("/myWish")
 	public String onTourist(Model model) {
-		System.out.println("Running onTourist in Get Method ");
+		//log.info("Running onTourist in Get Method ");
+		log.info("Running onTourist in Get Method");
 		model.addAttribute("state", states);
 		model.addAttribute("bestTimeToVisit", bestTimeToVisit);
 		return "touristPlaces";
@@ -48,7 +50,8 @@ public class TouristController {
 	
 	@GetMapping("/search")
 	public String onSearch(@RequestParam int id, Model model) {
-		System.out.println("Running on search for id " + id);
+		//log.info("Running on search for id " + id);
+		log.info("Running on search for id " + id);
 		
 		TouristPlacesDto dto = this.touristService.findById(id);
 		if(dto != null) {
@@ -68,7 +71,7 @@ public class TouristController {
 		Set<ConstraintViolation<TouristPlacesDto>> violations = this.touristService.validateAndSave(dto);
 		
 		if(violations.isEmpty()) {
-			System.out.println("No violation in Controller go to success page");
+			log.info("No violation in Controller go to success page");
 			return "touristSuccess";
 		}
 		
@@ -86,7 +89,8 @@ public class TouristController {
 	
 	@GetMapping("/searchByDestination")
 	public String onSearchByDestination(@RequestParam String destination, Model model) {
-		System.out.println("Running onSearchByDestination in controller " + destination);
+		//log.info("Running onSearchByDestination in controller " + destination);
+		log.info("Running onSearchByDestination in controller " + destination);
 		List<TouristPlacesDto> list = this.touristService.findByDestination(destination);
 		model.addAttribute("lists", list);
 		return "searchByDestinationName";
@@ -103,7 +107,8 @@ public class TouristController {
 	
 	@GetMapping("/updateByDestination")
 	public String onUpdate(@RequestParam int id, Model model) {
-		System.out.println("Running onUpdate " + id);
+		//log.info("Running onUpdate " + id);
+		log.info("Running onUpdate " + id);
 		TouristPlacesDto dto = this.touristService.findById(id);
 		model.addAttribute("dto", dto);
 		model.addAttribute("state", states);
@@ -115,7 +120,8 @@ public class TouristController {
 	
 	@PostMapping("/updateByDestination")
 	public String onUpdate(TouristPlacesDto dto, Model model) {
-		System.out.println("Running onUpdate "  + dto);
+		//log.info("Running onUpdate "  + dto);
+		log.info("Running onUpdate "  + dto);
 		Set<ConstraintViolation<TouristPlacesDto>> violations = this.touristService.validateAndUpdate(dto);
 		if(violations.size() > 0) {
 			model.addAttribute("errors", violations);
@@ -129,9 +135,10 @@ public class TouristController {
 	
 	@GetMapping("/list")
 	public String onList(Model model) {
-		System.out.println("Running onList in controller...");
+		//log.info("Running onList in controller...");
+		log.info("Running onList in controller...");
 		List<TouristPlacesDto> list = this.touristService.findByAll();
-		if(list != null && !list.isEmpty()) {
+		if(list != null ) {
 			model.addAttribute("list", list);
 		}else {
 			model.addAttribute("message" , "no data found in db");
@@ -142,15 +149,18 @@ public class TouristController {
 	
 	@GetMapping("/findByTwoProperties")
 	public String onFindByDestinationAndState(@RequestParam String destination, @RequestParam String state, Model model) {
-		System.out.println("Running onFindByDestinationAndState in controller...");
+		//log.info("Running onFindByDestinationAndState in controller...");
+		log.info("Running onFindByDestinationAndState in controller...");
 		List<TouristPlacesDto> list = this.touristService.findByDestinationAndState(destination, state);
-		if(destination != null && !destination.isEmpty() || state != null && !state.isEmpty() ) {
+		if(destination != null  || state != null  ) {
 			model.addAttribute("arrayList", list);
 		}else {
 			List<TouristPlacesDto> list1 = this.touristService.findByDestinationAndState(destination, state);
 		}
 		return "findByDestinationAndState";
 	}
+	
+	
 	
 	
 	

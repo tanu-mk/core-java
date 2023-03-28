@@ -4,6 +4,7 @@ import java.util.Set;
 
 import javax.validation.ConstraintViolation;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,8 +21,13 @@ import lombok.extern.slf4j.Slf4j;
 public class SignUpController {
 	
 	
+	@Autowired
 	private SignUpService signUpService;
 	
+	
+	public SignUpController() {
+		System.out.println("created " + this.getClass().getSimpleName());
+	}
 	
 	
 	@PostMapping("/unique")
@@ -37,7 +43,9 @@ public class SignUpController {
 		model.addAttribute("error", violations);
 		model.addAttribute("dto", dto);
 		
+		log.info("dto " + dto);
 		log.info("Violation in Controller");
+		
 		
 		return "SignUp";
 		

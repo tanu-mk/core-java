@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -13,8 +14,9 @@ import lombok.Data;
 @Table(name = "egg.signup_table")
 public class SignUpEntity {
 	
+	@Id
 	@Column(name = "s_id")
-	private Integer id;
+	private int id;
 	
 	@Column(name = "s_userId")
 	private String userId;
@@ -23,7 +25,7 @@ public class SignUpEntity {
 	private String email;
 	
 	@Column(name = "s_mobileNumber")
-	private Integer mobileNumber;
+	private long mobileNumber;
 	
 	@Column(name = "s_password")
 	private String password;

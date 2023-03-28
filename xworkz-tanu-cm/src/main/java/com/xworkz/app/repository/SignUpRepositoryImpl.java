@@ -28,6 +28,7 @@ public class SignUpRepositoryImpl implements SignUpRepository {
 	@Override
 	public boolean save(SignUpEntity entity) {
 			log.info("Running save in Repository");
+			log.info("Entity in Repo"+ entity);
 			
 			EntityManager em = this.entityManagerFactory.createEntityManager();
 			EntityTransaction et = em.getTransaction();

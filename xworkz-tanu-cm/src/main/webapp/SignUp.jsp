@@ -17,6 +17,25 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 	crossorigin="anonymous"></script>
+	
+	
+<script>
+function acceptAgreement(){
+	
+	var agreement = document.getElementById('agrrementId');
+	console.log(agrement.checked);
+	if(agreement.checked){
+		document.getElementById('submitId').disabled=false;
+	}
+	else{
+		document.getElementById('submitId').disabled='disabled';
+	}
+	
+}
+
+</script>	
+	
+	
 
 </head>
 
@@ -48,24 +67,21 @@
 
 <pre>
 
-UserId <input type = "text" name = userId value = "dto.userId"/>
+UserId <input type = "text" name = "userId" />
 
-Email <input type = "email" name = email value = "dto.email"/>
+Email <input type = "email" name = "email"/>
 
-Mobile Number <input type = "number" name = mobileNumber value = "dto.number"/>
+Mobile Number <input type = "number" name = "mobileNumber" />
 
-Password <input type = "password" name = password value = "dto.password"/>
+Password <input type = "password" name = "password" />
 
-Confirm Password <input type = "password" name = confirmPassword value = "dto.confirmPassword"/>
+Confirm Password <input type = "password" name = "confirmPassword" />
 
-Accept Agreement <input type="checkbox" id="acceptAgreement" name="acceptAgreement" value="dto.acceptAgreement">
-				<label for="acceptAgreement"> Yes </label>
-				
-				<input type="checkbox" id="acceptAgreement" name="acceptAgreement" value="dto.acceptAgreement">
-				<label for="acceptAgreement"> No </label>
+Accept Agreement <input type="checkbox" id="agreementId" name="acceptAgreement" onclick="acceptAgreement()">
 				
 				
-<input type = "Submit" value = "SignUp" class = "btn btn-primary"/>
+							
+<input type = "Submit"  id = "submitId" disabled = "true" />
 
 </pre>
 

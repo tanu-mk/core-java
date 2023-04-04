@@ -1,12 +1,14 @@
 package com.xworkz.app.configuration;
 
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@EnableWebMvc
 public class SignUpWebInit extends AbstractAnnotationConfigDispatcherServletInitializer implements WebMvcConfigurer {
 	
 	

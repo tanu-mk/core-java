@@ -1,7 +1,7 @@
 package com.xworkz.app.dto;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import lombok.Data;
@@ -16,20 +16,21 @@ public class SignUpDto {
 	@Size(min=3, max=20, message="UserId cannot be less than 3 and greater than 20")
 	private String userId;
 	
-	@Size(min=3, max=20, message="Email cannot be less than 3 and greater than 20")
+	@Size(min=3, max=50, message="Email cannot be less than 3 and greater than 20")
 	private String email;
 	
-	@Max(value = 10 , message="Moblie Number must contain 10 digits")
-	@Min(value = 10,  message="Moblie Number must contain 10 digits")
+	@NotNull
 	private Long mobileNumber;
 	
+	@NotBlank
 	@Size(min=3, max=12, message="Password cannot be less than 3 and greater than 12")
 	private String password;
 	
-	@Size(min=3, max=12, message="confirmPassword cannot be less than 3 and greater than 12")
+	@NotBlank
+	@NotNull
 	private String confirmPassword;
 	
-	@Size(min=3, max=15, message="acceptAgreement cannot be less than 3 and greater than 15")
+	@NotBlank
 	private String acceptAgreement;
 
 }

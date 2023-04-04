@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -12,6 +13,11 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name = "egg.signup_table")
+@NamedQuery(name = "findByCount", query = "select count(*) from SignUpEntity ent where ent.userId=:u or ent.email=:e or ent.mobileNumber=:m")
+@NamedQuery(name = "userId", query = "select count(*) from SignUpEntity ent where ent.userId=:userBy")
+@NamedQuery(name = "emailId",query = "select count(*) from  SignUpEntity ent where ent.email=:emailBy")
+@NamedQuery(name = "mobileId",query = "select count(*) from  SignUpEntity ent where ent.mobileNumber=:mobileBy")
+@NamedQuery(name = "IdandPassword", query = "select ent from SignUpEntity ent where ent.userId=:u")
 public class SignUpEntity {
 	
 	@Id

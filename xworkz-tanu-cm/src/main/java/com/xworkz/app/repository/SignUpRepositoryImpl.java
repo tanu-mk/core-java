@@ -1,5 +1,6 @@
 package com.xworkz.app.repository;
 
+import java.time.LocalTime;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -96,8 +97,9 @@ public class SignUpRepositoryImpl implements SignUpRepository {
 			em.close();
 		}
 	}
+	
 //	@Override
-//	public SignUpEntity findByIdAndPassword(String userId, String password) {
+//	public SignUpEntity signIn(String userId, String password) {
 //		EntityManager em = this.entityManagerFactory.createEntityManager();
 //		try {
 //			Query query = em.createNamedQuery("IdandPassword");
@@ -114,9 +116,8 @@ public class SignUpRepositoryImpl implements SignUpRepository {
 //	}
 //	
 	
-	
 	@Override
-	public SignUpEntity findByIdAndPassword(String userId) {
+	public SignUpEntity  userSignIn(String userId) {
 		EntityManager em = this.entityManagerFactory.createEntityManager();
 		try {
 			Query query = em.createNamedQuery("IdandPassword");
@@ -130,12 +131,6 @@ public class SignUpRepositoryImpl implements SignUpRepository {
 		}
 
 	}
-	
-	
-	
-	
-	
-	
 	
 	
 	@Override
@@ -153,7 +148,80 @@ public class SignUpRepositoryImpl implements SignUpRepository {
 		
 		return count;
 	}
-
+	
+	
+	@Override
+	public boolean onLock(String userId, int count) {
+		
+		EntityManager manager = this.entityManagerFactory.createEntityManager();
+		
+		try {
+			EntityTransaction et = manager.getTransaction();
+			et.begin();
+		Query query = manager.createNamedQuery("lockCount");
+		query.setParameter("u", userId);
+		query.setParameter("c", count);
+		query.executeUpdate();
+		et.commit();
+		return true;
+		}finally {
+			manager.close();
+		}
+		
+	}
+	
+	@Override
+	public SignUpEntity resetPassword(String email) {
+		
+		EntityManager manager = this.entityManagerFactory.createEntityManager();
+		try {
+			Query query = manager.createNamedQuery("email");
+			query.setParameter("ed", email);
+			Object object = query.getSingleResult();
+			SignUpEntity entity = (SignUpEntity) object;
+			log.info("" + entity);
+			return entity;
+		}finally {
+			manager.close();
+		}
+	}
+	
+	
+	@Override
+	public boolean update(SignUpEntity entity) {
+		
+		EntityManager manager = this.entityManagerFactory.createEntityManager();
+		try {
+			EntityTransaction et = manager.getTransaction();
+			et.begin();
+			manager.merge(entity);
+			et.commit();
+			return true;
+		}finally {
+			manager.close();
+		}
+	}
+	
+	
+	@Override
+	public boolean updatePassword(String userId, String password, Boolean resetPassword, LocalTime passwordChangedTime) {
+		
+		EntityManager manager = this.entityManagerFactory.createEntityManager();
+		try {
+			EntityTransaction et = manager.getTransaction();
+			et.begin();
+			Query query = manager.createNamedQuery("updatePassword");
+			query.setParameter("ud", userId);
+			query.setParameter("p", password);
+			query.setParameter("rp", resetPassword);
+			query.setParameter("pct", passwordChangedTime);
+			query.executeUpdate();
+			et.commit();
+			return true;
+		}finally {
+			manager.close();
+		}
+	}
 }
 			
 			

@@ -23,25 +23,22 @@
 
 <body>
 
-
-	<nav class="navbar navbar-light bg-dark">
+<nav class="navbar navbar-light bg-dark">
 		<div class="container-fluid">
 			<a class="navbar-brand"><img
 				src="https://x-workz.in/static/media/Logo.cf195593dc1b3f921369.png"
 				alt="" width="80" height="48" class="d-inline-block align-text-top"></a>
 
 				
-				<a href="SignUp.jsp"> Sign Up </a>
-				<a href="SignIn.jsp"> Sign In </a>
-				<a href = "UpdatePassword.jsp"> Update Password </a>
+				<a href="index.jsp"> Home </a>
+				
 				
 				
 		</div>
 
 	</nav>
 	
-	<h3> Welcome To Sign Up Page </h3>
+	<h2 style="color:green;"> Update Successfull </h2>
 
 </body>
-
 </html>

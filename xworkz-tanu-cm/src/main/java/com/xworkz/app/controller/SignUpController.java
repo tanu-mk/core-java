@@ -1,7 +1,10 @@
 package com.xworkz.app.controller;
 
+import java.time.LocalTime;
 import java.util.Set;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.ConstraintViolation;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +32,7 @@ public class SignUpController {
 	public SignUpController() {
 		System.out.println("created " + this.getClass().getSimpleName());
 	}
+	
 	
 	
 	@PostMapping("/unique")
@@ -60,24 +64,79 @@ public class SignUpController {
 	}
 	
 	
+	
+	
 	@PostMapping("/special")
-	public String userSignIn(String userId, String password, Model model) {
+	public String userSignIn(String userId, String password, Model model,HttpServletRequest request) {
+		log.info("Running in userSignIn condition ");
 		try {
-		SignUpDto dto = this.signUpService.findByIdAndPassword(userId, password);
-		if (dto!=null) {
-			log.info("User ID and password is matched");
-			model.addAttribute("userID",dto.getUserId());
-			return "LoginSuccess";
-		}
-		}
-		catch (Exception e) {
-		}
-			model.addAttribute("msg", "UserID OR Password is not matching");
-			return "SignIn";			
+			SignUpDto dto = this.signUpService.userSignIn(userId, password);
+			log.info("Login count" + dto.getLockCount());
+			if (dto.getLockCount() >= 3) {
+				model.addAttribute("msg", "Account locked Reset password");
+				log.info("Acount locked due to 3 attempts");
+				return "SignIn";
+			}
+			
+			if (dto != null) {
 
+				if (dto.getResetPassword() == true) {
+					log.info("Running in ResetPassword true condition");
+					if (!dto.getPasswordChangedTime().isAfter(LocalTime.now())) {
+						log.info("Running in time warifying condition");
+						model.addAttribute("msgs", "Time out plz try again after sometime");
+						return "SignIn";
+					}
+					model.addAttribute("userID", dto.getUserId());
+					log.info("Running in reset condition");
+					log.info("ResetPassword---" + dto.getResetPassword());
+					log.info("Timer-----" + dto.getPasswordChangedTime().isAfter(LocalTime.now()));
+					return "UpdatePassword";
+				}
+				
+				//System.currentTimeMillis();
+				log.info("User ID and password is matched");
+				HttpSession httpSession= request.getSession(true);
+				httpSession.setAttribute("userID", dto.getUserId());
+				return "PasswordSuccess";
+			}
+		} catch (Exception e) {
+			log.info(e.getMessage());
+		}
+		log.info("UserID OR Password is not matching");
+		model.addAttribute("msg", "UserID OR Password is not matching");
+		return "SignIn";
 	}
 	
 	
 	
-
+	@PostMapping("/reset")
+	public String resetPassword(String email, Model model) {
+		try{
+			SignUpDto dto = this.signUpService.resetPassword(email);
+			if(dto.getResetPassword() == true) {
+				model.addAttribute("message", "Password reset successfull plz login within 2 min with otp");
+				model.addAttribute("message", "Password reset successful plz login within 2 min with otp");
+				return "ResetPassword";
+			}
+		}catch (Exception e) {
+			log.info(e.getMessage());
+		}			
+		return "ResetPassword";
+	}
+	
+	
+	
+	@PostMapping("/passwordUpdate")
+	public String updatePassword(String userId, String password, String confirmPassword) {
+		log.info("Running in updatePassword method");
+		this.signUpService.updatePassword(userId, password, confirmPassword);
+		return "PasswordSuccess";
+	}
+	
 }
+	
+	
+	
+
+

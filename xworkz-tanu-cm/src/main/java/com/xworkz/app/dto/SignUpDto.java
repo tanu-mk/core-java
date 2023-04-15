@@ -1,5 +1,7 @@
 package com.xworkz.app.dto;
 
+import java.time.LocalTime;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -32,5 +34,11 @@ public class SignUpDto {
 	
 	@NotBlank
 	private String acceptAgreement;
+	
+	private int lockCount;
+	
+	private Boolean resetPassword;
+	
+	private LocalTime passwordChangedTime;
 
 }

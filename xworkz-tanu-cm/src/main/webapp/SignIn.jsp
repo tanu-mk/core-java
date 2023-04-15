@@ -28,13 +28,19 @@
 				src=" https://x-workz.in/static/media/Logo.cf195593dc1b3f921369.png"
 				alt="" width="80" height="48" class="d-inline-block align text-top">
 
-				<a href="index.jsp">Home</a> <a href="SignUp.jsp">SignUp</a>
+				<a href="index.jsp" class="btn btn-warning">Home</a> 
+				<a href="SignUp.jsp" class="btn btn-warning">SignUp</a>
+				
 				
 		</div>
+		
+		<nav></nav>
 
 	</nav>
 	
 	<h4 style = "color:red">${msg}</h4>
+	<h4 style = "color:red">${lock}</h4>
+	<h4 style="color: red">${msgs}</h4>
 
 	<form action="special" method="post">
 		<pre>
@@ -46,6 +52,9 @@
 	
 	Password<input type="password" name="password" id="userPassword">
 			 <input type="checkbox" onclick="myFunction()">Show Password <br>
+			 
+	<a href="ResetPassword.jsp">Forgot Password</a>
+	
 	
 	<button type="submit">SignIn</button>
 	</pre>

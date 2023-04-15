@@ -39,24 +39,23 @@
 		<pre>
 	User ID <input type="text" name="userId" id="userName" onchange="ValidName()"> <span id="nameError" style="color: red"></span>
 			<span id="displayUserName" style="color: red"> </span>
-			<br> 
-			
+			 
 	Email<input type="email" name="email" id="emailId" onchange="validEmail()"> <span id="emailError" style="color: red"></span><br>
 		<span id="display" style="color: red"></span>
-			  
+		
 	Mobile Number<input type="number" name="mobileNumber" id="userMobile" onchange="ValidMobile()"> <span id="mobileError" style="color: red"></span> <br>
 		    <span id="displayUserMobile" style="color: red"></span>
 		    
 	Password<input type="password" name="password" id="userPassword" onchange="ValidPassword()"> <span id="passwordError" style="color: red"></span> 
-			 <input type="checkbox" onclick="myFunction()">Show Password <br>
-			
+			 <input type="checkbox" onclick="myFunction()">Show Password
+			 
 	ConfirmPassword<input type="password" name="confirmPassword" id="userConfirmPassword" onchange="ValidPassword()">
-			<span id="passwordCompare" style="color: red"></span> <br>
-			  
+			<span id="passwordCompare" style="color: red"></span>
+			
 	Accept Agreement <input type="checkbox" name="acceptAgreement"
-				id="agreementConfirm" onclick="onconfirm()"> <br>
+				id="agreementConfirm" onclick="onconfirm()">
 		   
-		   <button type="submit" id="submitId" disabled="true">SignUp</button>
+	<button type="submit" id="submitId" disabled="true">SignUp</button>
 	</pre>
 	</form>
 
@@ -93,7 +92,7 @@
 				document.getElementById('nameError').innerHTML = '';
 			} else {
 				console.log('invalid name');
-				document.getElementById('nameError').innerHTML = 'Please enter valid name min 4 and max 30 character';
+				document.getElementById('nameError').innerHTML = 'Please enter valid name min 2 and max 30 character';
 			}
 
 			const xhttp = new XMLHttpRequest();

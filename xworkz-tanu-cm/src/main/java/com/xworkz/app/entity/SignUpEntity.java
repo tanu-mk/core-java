@@ -1,6 +1,7 @@
 package com.xworkz.app.entity;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,6 +19,9 @@ import lombok.Data;
 @NamedQuery(name = "emailId",query = "select count(*) from  SignUpEntity ent where ent.email=:emailBy")
 @NamedQuery(name = "mobileId",query = "select count(*) from  SignUpEntity ent where ent.mobileNumber=:mobileBy")
 @NamedQuery(name = "IdandPassword", query = "select ent from SignUpEntity ent where ent.userId=:u")
+@NamedQuery(name = "lockCount", query = "update SignUpEntity ent set ent.lockCount=:c where ent.userId=:u")
+@NamedQuery(name = "email", query = "select ent from SignUpEntity ent where ent.email=:ed")
+@NamedQuery(name = "updatePassword", query = "update SignUpEntity ent set ent.password=:p, ent.resetPassword=:rp, ent.passwordChangedTime=:pct where ent.userId=:ud")
 public class SignUpEntity {
 	
 	@Id
@@ -48,4 +52,14 @@ public class SignUpEntity {
 	@Column(name = "s_updatedDate")
 	private LocalDateTime updatedDate;
 	
+	@Column(name = "s_lockCount")
+	private int lockCount;
+	
+	@Column(name = "s_resetPassword")
+	private Boolean resetPassword;
+	
+	@Column(name = "s_passwordChangedTime")
+	private LocalTime passwordChangedTime;
+	
 }
+

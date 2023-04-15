@@ -1,8 +1,10 @@
 package com.xworkz.app.service;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Collections;
 import java.util.Properties;
+import java.util.Random;
 import java.util.Set;
 
 import javax.mail.Authenticator;
@@ -38,6 +40,8 @@ public class SignUpServiceImpl implements SignUpService  {
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+	
+	String resetPassword = DefaultPasswordGenerator.generate(6);
 	
 	
 	public SignUpServiceImpl() {
@@ -89,6 +93,8 @@ public class SignUpServiceImpl implements SignUpService  {
 			entity.setCreatedBy(dto.getUserId());
 			entity.setCreatedDate(LocalDateTime.now());
 			entity.setPassword(passwordEncoder.encode(dto.getPassword()));
+			entity.setPasswordChangedTime(LocalTime.of(0, 0, 0));
+			entity.setResetPassword(false);
 			//BeanUtils.copyProperties(dto, entity);
 			
 			boolean saved = this.signUpRepository.save(entity);
@@ -106,7 +112,7 @@ public class SignUpServiceImpl implements SignUpService  {
 			
 		}
 	
-//	
+//	for SignIn
 //	@Override
 //	public SignUpDto findByIdAndPassword(String userId, String password) {
 //		SignUpEntity entity = this.signUpRepository.findByIdAndPassword(userId, password);
@@ -122,32 +128,33 @@ public class SignUpServiceImpl implements SignUpService  {
 	
 	
 	@Override
-	public SignUpDto findByIdAndPassword(String userId, String password) {
-		
-		SignUpEntity entity = this.signUpRepository.findByIdAndPassword(userId);
-		
+	public SignUpDto userSignIn(String userId, String password) {
+		SignUpEntity entity = this.signUpRepository.userSignIn(userId);
 		SignUpDto dto = new SignUpDto();
 		BeanUtils.copyProperties(entity, dto);
 		
-		log.info("matching----" + passwordEncoder.matches(password, entity.getPassword()));
+		log.info("matching--" + passwordEncoder.matches(password, entity.getPassword()));
+		log.info("Time matching--" + entity.getPasswordChangedTime().isAfter(LocalTime.now()));
+		log.info("Now Present Time--" + LocalTime.now());
+		log.info("PasswordChangedTime--" + entity.getPasswordChangedTime());
 
-		if (dto.getUserId().equals(userId) && passwordEncoder.matches(password, entity.getPassword())) {
+		log.info("Time " + LocalTime.now().isBefore(entity.getPasswordChangedTime()));
+		if (entity.getLockCount() >= 3) {
+			log.info("Running in Login count condition");
 			return dto;
 		}
-		else {
+
+			if (dto.getUserId().equals(userId) && passwordEncoder.matches(password, entity.getPassword())) {
+			log.info("Running userId matching and password matching");
+			return dto;
+		}  else {
+			this.signUpRepository.onLock(userId, entity.getLockCount() + 1);
+			log.info("count of login" + entity.getLockCount() + 1);
 			return null;
 		}
-		
 	}
 	
-	
-	
-	
-	
-	
-	
 		
-	
 	@Override
 	public boolean sendMail(String email) {
 		String portNumber = "587";  //485,587,25
@@ -184,11 +191,144 @@ public class SignUpServiceImpl implements SignUpService  {
 			e.printStackTrace();
 		}
 		
-		
-		
 		return true;
 	}
 
-}
+	
+	
+	
+	@Override
+	public SignUpDto resetPassword(String email) {
+		log.info("Reset Password " + resetPassword);
+		
+		SignUpEntity entity = this.signUpRepository.resetPassword(email);
+		if(entity != null) {
+			log.info("entity found in email " + email);
+			entity.setPassword(passwordEncoder.encode(resetPassword));
+			entity.setUpdatedBy("System");
+			entity.setUpdatedDate(LocalDateTime.now());
+			entity.setLockCount(0);
+			entity.setResetPassword(true);
+			entity.setPasswordChangedTime(LocalTime.now().plusSeconds(120));
+			boolean update = this.signUpRepository.update(entity);
+			if(update) {
+				sendMail(entity.getEmail(), "Your reset password is "+ resetPassword);
+			}
+			log.info("Updated---" + update);
+			SignUpDto updatedDto = new SignUpDto();
+			BeanUtils.copyProperties(entity, updatedDto);
+			
+			return updatedDto;
+		}
+		log.info("Email not found for email " + email);
+		return SignUpService.super.resetPassword(email);
+	}
+	
+	
+	
+	
+	@Override
+	public SignUpDto updatePassword(String userId, String password, String confirmPassword) {
+		
+		SignUpEntity entity = new SignUpEntity();
+		
+		if(password.equals(confirmPassword)) {
+			
+			boolean passwordUpdated = this.signUpRepository.updatePassword(userId, passwordEncoder.encode(password), false, LocalTime.of(0,0,0));
+			log.info("passwordUpdated " + passwordUpdated);
+		}
+		return SignUpService.super.updatePassword(userId, password, confirmPassword);
+	}
+	
+	
+	
+	
+	@Override
+	public boolean sendMail(String email, String text) {
+		
+		String portNumber = "587";  //485,587,25
+		String hostName = "smtp.office365.com";
+		String fromEmail = "rudraproject26@outlook.com";
+		String password = "rudra@2026";
+		String to = email;
+		
+		Properties prop = new Properties();
+		prop.put("mail.smtp.host", hostName);
+		prop.put("mail.smtp.port", portNumber);
+		prop.put("mail.smtp.starttls.enable", "true");
+		prop.put("mail.debug", "true");
+		prop.put("mail.smtp.auth", "true");
+		prop.put("mail.smtp.ssl.trust", "smtp.office365.com");
+		prop.put("mail.transport.protocol", "smtp");
+		
+		Session session = Session.getInstance(prop, new Authenticator() {
+			@Override
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(fromEmail, password);
+			}
+		});
+		
+		MimeMessage message = new MimeMessage(session);
+		try {
+			message.setFrom(new InternetAddress(fromEmail));
+			message.setSubject("Registration completed");
+			//message.setText("Thanks for Registering!!!");
+			message.setText(text);
+			message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+			Transport.send(message);
+			log.info("mail sent successfully");
+		}catch(MessagingException e) {
+			e.printStackTrace();
+		}
+	return true;
+	}
+
+	
+		
+	public final static class DefaultPasswordGenerator {
+		private static final String[] charCategories = new String[] { "abcdefghijklmnopqrstuvwxyz",
+				"ABCDEFGHIJKLMNOPQRSTUVWXYZ", "0123456789" };
+
+		public static String generate(int length) {
+			StringBuilder password = new StringBuilder(length);
+			Random random = new Random(System.nanoTime());
+
+			for (int i = 0; i < length; i++) {
+				String charCategory = charCategories[random.nextInt(charCategories.length)];
+				int position = random.nextInt(charCategory.length());
+				password.append(charCategory.charAt(position));
+			}
+
+			return new String(password);
+		}
+//		String password = DefaultPasswordGenerator.generate(6);[use this reference to generate the password]
+	}
+	
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
 	
 

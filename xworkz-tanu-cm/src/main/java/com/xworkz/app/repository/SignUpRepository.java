@@ -1,5 +1,7 @@
 package com.xworkz.app.repository;
 
+import java.time.LocalTime;
+
 import com.xworkz.app.entity.SignUpEntity;
 
 public interface SignUpRepository {
@@ -11,12 +13,17 @@ public interface SignUpRepository {
 		return null;
 	}
 	
+	//for lock count
+	 boolean onLock(String userId, int count);
+	
+	
+	
 //  for sign in	
 //	default SignUpEntity findByIdAndPassword(String userId, String Password) {
 //		return null;
 //	}
 	
-	default SignUpEntity findByIdAndPassword(String userId) {
+	default SignUpEntity userSignIn(String userId) {
 		return null;
 	}
 	
@@ -32,9 +39,15 @@ public interface SignUpRepository {
 	default Long findByMobile(Long mobile) {
 		return null;
 	}
-
 	
+	//reset password
+	default SignUpEntity resetPassword(String email) {
+		return null;
+	}
 	
+	boolean update(SignUpEntity entity);
+	
+	boolean updatePassword(String userId, String password, Boolean resetPassword, LocalTime passwordChangedTime);	
 	
 	
 }

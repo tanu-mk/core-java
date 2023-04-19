@@ -11,6 +11,8 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
@@ -61,7 +63,13 @@ public class SignUpConfiguration {
 	public PasswordEncoder encoder() {
 		log.info("Registering the PasswordEncoder");
 		return new BCryptPasswordEncoder();
-		
+	}
+	
+
+	@Bean
+	public MultipartResolver multipartResolver() {
+		log.info("Running in multipartResolver");
+		return new StandardServletMultipartResolver();
 	}
 	
 	

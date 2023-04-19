@@ -40,5 +40,7 @@ public class SignUpDto {
 	private Boolean resetPassword;
 	
 	private LocalTime passwordChangedTime;
+	
+	private String picName;
 
 }

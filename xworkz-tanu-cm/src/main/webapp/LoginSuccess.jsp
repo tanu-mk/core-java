@@ -27,17 +27,23 @@
 				src=" https://x-workz.in/static/media/Logo.cf195593dc1b3f921369.png"
 				alt="" width="80" height="48" class="d-inline-block align text-top">
 
-				<a href="index.jsp">Home</a> <a href="SignUp.jsp">SignUp</a>
+				<a href="index.jsp" class="btn btn-warning">Home</a> 
+				
+				<a href="SignUp.jsp" class="btn btn-warning">SignUp</a>
+				
+				
 				
 		</div>
 
 	</nav>
 	
+	
+	
 	<div>
 	User Name:${userID}
 	</div>
 
-	<h2> Login Successfull </h2>
+	<h2> Login S  uccessfull after reseting the Password </h2>
 
 </body>
 </html>

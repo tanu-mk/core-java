@@ -30,15 +30,15 @@
 				alt="" width="80" height="48" class="d-inline-block align-text-top"></a>
 
 				
-				<a href="index.jsp"> Home </a>
+				<a href="index.jsp" class="btn btn-warning"> Home </a>
 				
-				
+				<a href="updateProfile.jsp" class="btn btn-warning"> Update Profile </a>
 				
 		</div>
 
 	</nav>
 	
-	<h2 style="color:green;"> Update Successfull </h2>
+	<h2 style="color:green;"> Login Successfull </h2>
 
 </body>
 </html>

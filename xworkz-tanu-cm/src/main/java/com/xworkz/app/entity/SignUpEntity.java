@@ -61,5 +61,8 @@ public class SignUpEntity {
 	@Column(name = "s_passwordChangedTime")
 	private LocalTime passwordChangedTime;
 	
+	@Column(name = "s_picName")
+	private String picName;
+	
 }
 

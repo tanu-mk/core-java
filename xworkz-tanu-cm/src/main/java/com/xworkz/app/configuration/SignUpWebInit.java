@@ -1,5 +1,10 @@
 package com.xworkz.app.configuration;
 
+import java.io.File;
+
+import javax.servlet.MultipartConfigElement;
+import javax.servlet.ServletRegistration.Dynamic;
+
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -39,6 +44,18 @@ public class SignUpWebInit extends AbstractAnnotationConfigDispatcherServletInit
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
 		log.info("Running configureDefaultServletHandling");
 		configurer.enable();
+	}
+	
+	@Override
+	protected void customizeRegistration(Dynamic registration) {
+		String tempDir = "D:\\temp";
+		int maxUploadSizeInMb = 20 * 1024 * 1024;
+		File uploadDirectory = new File(tempDir); // path used by server
+		MultipartConfigElement multipartConfigElement = new MultipartConfigElement(uploadDirectory.getAbsolutePath(),
+				maxUploadSizeInMb, maxUploadSizeInMb * 2, maxUploadSizeInMb / 2);
+
+		registration.setMultipartConfig(multipartConfigElement);
+
 	}
 	
 

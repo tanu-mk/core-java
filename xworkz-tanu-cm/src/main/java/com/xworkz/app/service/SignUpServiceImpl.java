@@ -241,6 +241,20 @@ public class SignUpServiceImpl implements SignUpService  {
 	}
 	
 	
+	@Override
+	public SignUpDto updateProfile(String userId, String email, Long mobileNumber, String imagePath) {
+		log.info("Inside update profile method");
+		
+			SignUpEntity upEntity = this.signUpRepository.resetPassword(email);
+			log.info("userId: " + userId + "email: " + email + "mobile: " + mobileNumber + "image name: "+ 										imagePath);
+
+			upEntity.setUserId(userId);
+			upEntity.setMobileNumber(mobileNumber);
+			upEntity.setPicName(imagePath);
+			boolean updated = this.signUpRepository.update(upEntity);
+			log.info("updated--" + updated);
+			return SignUpService.super.updateProfile(userId, email, mobileNumber, imagePath);
+		}
 	
 	
 	@Override

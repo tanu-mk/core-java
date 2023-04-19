@@ -40,4 +40,13 @@ public interface SignUpService {
 	}	
 	
 	boolean sendMail(String email, String text);
+
+	default SignUpDto updateProfile(String userId, String email, Long mobileNumber, String imagePath) {
+		return null;
+	}
+
+
 }
+
+
+

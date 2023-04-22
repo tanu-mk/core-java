@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.xworkz.app.entity.SignUpEntity;
+import com.xworkz.app.entity.TechnologyEntity;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -222,6 +223,28 @@ public class SignUpRepositoryImpl implements SignUpRepository {
 			manager.close();
 		}
 	}
+	
+	
+	@Override
+	public boolean saveTechnology(TechnologyEntity entity) {
+			log.info("Running save in saveTechnology");
+			
+			EntityManager em = this.entityManagerFactory.createEntityManager();
+			try {
+			EntityTransaction et = em.getTransaction();
+			et.begin();
+			em.persist(entity);
+			et.commit();
+			return true;
+			}finally {
+				em.close();
+			}
+		}
+	
+	
+	
+		
+	
 }
 			
 			

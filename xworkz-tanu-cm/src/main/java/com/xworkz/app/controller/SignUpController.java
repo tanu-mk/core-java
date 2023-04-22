@@ -3,12 +3,14 @@ package com.xworkz.app.controller;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalTime;
+import java.util.List;
 import java.util.Set;
 
 import javax.servlet.ServletOutputStream;
@@ -29,6 +31,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.xworkz.app.dto.SignUpDto;
+import com.xworkz.app.entity.TechnologyEntity;
 import com.xworkz.app.service.SignUpService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -185,6 +188,8 @@ public class SignUpController {
 	@GetMapping("/download")
 	public void onDownload(HttpServletResponse response, @RequestParam String fileName, SignUpDto user)
 			throws IOException {
+		
+		try {
 		Path path = Paths.get("D:\\pic\\" + user.getPicName());
 		path.toFile();
 		response.setContentType("image/jpeg");
@@ -193,12 +198,34 @@ public class SignUpController {
 		ServletOutputStream out = response.getOutputStream();
 		IOUtils.copy(in, out);
 		response.flushBuffer();
+		}catch(FileNotFoundException fnfe) {
+			fnfe.getStackTrace();
+		}
 
 	}
 	
 	
+	@PostMapping("/technology")
+	public String onTechnology(String userId, TechnologyEntity entity, Model model) {
+		log.info("Running technology in controller");
+		
+		SignUpDto dto = this.signUpService.addTechnology(userId, entity);
+		
+		model.addAttribute("techs", "technologies added successfully");
+		model.addAttribute("techno", entity);
+		return "AddTechnology";
+		
+	}
 	
+	@GetMapping("/viewTech")
+	public String onViewTech(@RequestParam String userId, Model model) {
+		
+		log.info("Running view Technology in controller");
+		List<TechnologyEntity> technology = this.signUpService.viewTechnology(userId);
+		model.addAttribute("viewTech", technology);
 	
+		return "ViewTechnology";
+	}
 	
 	
 	

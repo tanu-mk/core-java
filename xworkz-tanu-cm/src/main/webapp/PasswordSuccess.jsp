@@ -32,11 +32,17 @@
 				
 				<a href="index.jsp" class="btn btn-warning"> Home </a>
 				
-				<a href="updateProfile.jsp" class="btn btn-warning"> Update Profile </a>
+				
+				<span style="color: white;">Welcome:${userID}</span>
+				<img src="download?fileName=${dtoPic}" height="50" width="80">
 				
 		</div>
 
 	</nav>
+	
+	<a href="updateProfile.jsp" class="btn btn-warning"> Update Profile </a>
+	<a href="AddTechnology.jsp" class="btn btn-warning"> Add Technology </a>
+	<a href="viewTech?userId=${userID}" class="btn btn-warning" > View Technology </a>
 	
 	<h2 style="color:green;"> Login Successfull </h2>
 

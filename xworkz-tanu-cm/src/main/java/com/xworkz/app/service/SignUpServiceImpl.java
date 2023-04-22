@@ -3,6 +3,7 @@ package com.xworkz.app.service;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Collections;
+import java.util.List;
 import java.util.Properties;
 import java.util.Random;
 import java.util.Set;
@@ -27,6 +28,7 @@ import org.springframework.stereotype.Service;
 
 import com.xworkz.app.dto.SignUpDto;
 import com.xworkz.app.entity.SignUpEntity;
+import com.xworkz.app.entity.TechnologyEntity;
 import com.xworkz.app.repository.SignUpRepository;
 
 import lombok.extern.slf4j.Slf4j;
@@ -319,6 +321,43 @@ public class SignUpServiceImpl implements SignUpService  {
 	}
 	
 		
+	
+	@Override
+	public SignUpDto addTechnology(String userId, TechnologyEntity technologyEntity) {
+		
+		log.info("Running addTechnology in service impl");
+		
+		SignUpEntity signUpEntity = this.signUpRepository.userSignIn(userId);
+		technologyEntity.setCreatedBy(userId);
+		technologyEntity.setSignUpEntity(signUpEntity);
+		log.info("accessing entity" + signUpEntity);
+		
+		boolean saved = this.signUpRepository.saveTechnology(technologyEntity);
+		log.info("Technologies saved in database" + saved);
+		
+		
+		return SignUpService.super.addTechnology(userId, technologyEntity);
+	}
+	
+	
+	@Override
+	public List<TechnologyEntity> viewTechnology(String userId) {
+		
+		log.info("Running view Technology in service imple");
+		SignUpEntity signUpEntity = this.signUpRepository.userSignIn(userId);
+		List<TechnologyEntity> technology = signUpEntity.getTechnology();
+		log.info("Getting technologies as per userId : "+userId+" : "+technology);
+		
+		return technology;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 		
 		
 		

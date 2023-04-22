@@ -1,10 +1,12 @@
 package com.xworkz.app.service;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
 
 import com.xworkz.app.dto.SignUpDto;
+import com.xworkz.app.entity.TechnologyEntity;
 
 
 public interface SignUpService {
@@ -44,7 +46,18 @@ public interface SignUpService {
 	default SignUpDto updateProfile(String userId, String email, Long mobileNumber, String imagePath) {
 		return null;
 	}
+	
+	
 
+	default SignUpDto addTechnology(String userId, TechnologyEntity entity) {
+		return null;
+	}
+	
+	default List<TechnologyEntity> viewTechnology(String userId){
+		return null;
+	}
+	
+	
 
 }
 

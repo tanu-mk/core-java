@@ -1,8 +1,10 @@
 package com.xworkz.app.repository;
 
 import java.time.LocalTime;
+import java.util.List;
 
 import com.xworkz.app.entity.SignUpEntity;
+import com.xworkz.app.entity.TechnologyEntity;
 
 public interface SignUpRepository {
 	
@@ -15,7 +17,6 @@ public interface SignUpRepository {
 	
 	//for lock count
 	 boolean onLock(String userId, int count);
-	
 	
 	
 //  for sign in	
@@ -49,6 +50,11 @@ public interface SignUpRepository {
 	
 	boolean updatePassword(String userId, String password, Boolean resetPassword, LocalTime passwordChangedTime);	
 	
+	boolean saveTechnology(TechnologyEntity entity);
+	
+	default List<TechnologyEntity> viewTechnology(String view){
+		return null;
+	}
 	
 }
  

@@ -1,18 +1,30 @@
 package com.xworkz.app.entity;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+
 @Table(name = "egg.signup_table")
 @NamedQuery(name = "findByCount", query = "select count(*) from SignUpEntity ent where ent.userId=:u or ent.email=:e or ent.mobileNumber=:m")
 @NamedQuery(name = "userId", query = "select count(*) from SignUpEntity ent where ent.userId=:userBy")
@@ -22,7 +34,7 @@ import lombok.Data;
 @NamedQuery(name = "lockCount", query = "update SignUpEntity ent set ent.lockCount=:c where ent.userId=:u")
 @NamedQuery(name = "email", query = "select ent from SignUpEntity ent where ent.email=:ed")
 @NamedQuery(name = "updatePassword", query = "update SignUpEntity ent set ent.password=:p, ent.resetPassword=:rp, ent.passwordChangedTime=:pct where ent.userId=:ud")
-public class SignUpEntity {
+public class SignUpEntity implements Serializable {
 	
 	@Id
 	@Column(name = "s_id")
@@ -63,6 +75,9 @@ public class SignUpEntity {
 	
 	@Column(name = "s_picName")
 	private String picName;
+	
+	@OneToMany(mappedBy = "signUpEntity",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	private List<TechnologyEntity> technology;
 	
 }
 

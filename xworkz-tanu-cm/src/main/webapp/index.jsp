@@ -33,7 +33,7 @@
 				
 				<a href="SignUp.jsp" class="btn btn-warning"> Sign Up </a>
 				<a href="SignIn.jsp" class="btn btn-warning"> Sign In </a>
-				<a href = "UpdatePassword.jsp" class="btn btn-warning"> Update Password </a>
+				
 				
 				
 		</div>

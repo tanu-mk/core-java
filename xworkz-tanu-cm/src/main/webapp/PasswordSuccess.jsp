@@ -41,7 +41,7 @@
 	</nav>
 	
 	<a href="updateProfile.jsp" class="btn btn-warning"> Update Profile </a>
-	<a href="AddTechnology.jsp" class="btn btn-warning"> Add Technology </a>
+	<a href="technology" class="btn btn-warning">Add Technology </a>
 	<a href="viewTech?userId=${userID}" class="btn btn-warning" > View Technology </a>
 	
 	<h2 style="color:green;"> Login Successfull </h2>

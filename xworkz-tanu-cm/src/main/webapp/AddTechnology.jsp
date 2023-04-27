@@ -51,8 +51,13 @@ User Id<input value="${dto.userId}" readonly="readonly" name="userId"/>
 <tr>
 
 <tr>
-<td>Technology Language</td>
-<td><input type="text" name="language" value="${entity.languange}"/></td>
+<td> Technology Language </td>
+<td><select name="languange">
+<option value = "${entity.languange}"> SELECT </option>
+<c:forEach items="${lang}" var="l">
+	<option value="${l}"> ${l} </c:forEach>
+</select>
+</td>
 <tr>
 
 <tr>
@@ -80,15 +85,20 @@ User Id<input value="${dto.userId}" readonly="readonly" name="userId"/>
 <td><input type="text" name="licenseNo" value="${entity.licenseNo}"/></td>
 <tr>
 
-<tr>
-<td>Open Source</td>
-<td><input type="text" name="openSource" value="${entity.openSource}"/></td>
+<tr> <td>	Open source </td> <td>Yes <input type="radio" name="openSource" value="true" >
+	                                   No <input type="radio" name="openSource" value="false">  </td>            </tr>
 <tr>
 
-<tr>
+
 <td>OS Type</td>
-<td><input type="text" name="osType" value="${entity.osType}"/></td>
+<td><select name ="osType">
+<option value="${entity.osType}">SELECT</option>
+<c:forEach items="${list}" var="t">
+	<option value="${t}"> ${t} </c:forEach>
+</select>
+</td>
 <tr>
+
 
 </table>
 

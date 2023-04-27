@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -24,6 +25,7 @@ import lombok.ToString;
 @Getter
 
 @Table(name = "egg.t_technology")
+@NamedQuery(name="searchByTechName", query="select ent from TechnologyEntity ent where ent.technologyName=:techName or ent.languange=:lang or ent.version=:ver or ent.owner=:own or ent.supportFrom=:sf or ent.supportTo=:st or ent.licenseNo=:ln or ent.openSource=:os or ent.osType=:pt and ent.signUpEntity.userId=:tuid")
 public class TechnologyEntity {
 	
 	@Id
@@ -37,7 +39,7 @@ public class TechnologyEntity {
 	private String languange;
 	
 	@Column(name = "t_version")
-	private Double version;
+	private String version;
 	
 	@Column(name = "t_owner")
 	private String owner;

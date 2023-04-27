@@ -10,6 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalTime;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
@@ -44,6 +45,10 @@ public class SignUpController {
 	
 	@Autowired
 	private SignUpService signUpService;
+	
+	private List<String> list = Arrays.asList("Windows", "Linux", "macOS", "Android", "Unix", "Ubuntu", "Red Hat", "Chrome OS", "Symbian");
+	private List<String> os = Arrays.asList("Yes", "No");
+	private List<String> language = Arrays.asList("Java", "HTML", "JavaScript", "BootStrap", "Python", "PHP", "SQL", "CSS", "AI", "ML");
 	
 	
 	public SignUpController() {
@@ -204,19 +209,35 @@ public class SignUpController {
 
 	}
 	
+	//get mapping for adding drop downs for some technologies in add technologies
+	@GetMapping("/technology")
+	public String listTechnology(Model model) {
+		log.info("Running listTechnology");
+		model.addAttribute("list", list);
+		model.addAttribute("os", os);
+		model.addAttribute("lang", language);
+		return "AddTechnology";
+	}
 	
+	//add technology
 	@PostMapping("/technology")
 	public String onTechnology(String userId, TechnologyEntity entity, Model model) {
 		log.info("Running technology in controller");
 		
 		SignUpDto dto = this.signUpService.addTechnology(userId, entity);
 		
+		model.addAttribute("list", list);
+		model.addAttribute("os", os);
+		model.addAttribute("lang", language);
 		model.addAttribute("techs", "technologies added successfully");
 		model.addAttribute("techno", entity);
 		return "AddTechnology";
 		
 	}
 	
+	
+	
+	//view technology
 	@GetMapping("/viewTech")
 	public String onViewTech(@RequestParam String userId, Model model) {
 		

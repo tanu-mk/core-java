@@ -39,6 +39,30 @@
 	</nav>
 	
 	
+	<form action="techName">
+	
+	<div>
+	<div style="color:blue" align="center"> <h3>Search Bar</h3></div>
+	
+	
+	<div align="center"> 
+	<input type="search" name="technologyName" placeholder="TechnologyName">
+	<input type="search" name="languange" placeholder="Language">
+	<input type="search" name="version" placeholder="Version">
+	<input type="search" name="owner" placeholder="Owner">
+	<input type="search" name="supportFrom" placeholder="Support From">
+	<input type="search" name="supportTo" placeholder="Support To">
+	<input type="search" name="licenseNo" placeholder="License No"></div>
+	<div align="center"><input type="search" name="openSource" placeholder="Open Source">
+	<input type="search" name="osType" placeholder="Os Type"></div>
+	<input type="hidden" value="${userID}" name="userId">
+	<div align="center"> <input type="submit" value="Search" class="btn-btn-secondary"> </div>
+	
+	</div>
+	
+	</form>
+	
+	
 	<table class="table table-dark table-hover">
 	
 	<tr>
@@ -65,7 +89,7 @@
 	<td>${t.licenseNo}</td>
 	<td>${t.openSource}</td>
 	<td>${t.osType}</td>
-	
+	</tr>
 	
 	
 	</c:forEach>
@@ -73,6 +97,9 @@
 	
 	
 	</table>
+	
+	
+	
 	
 	
 	

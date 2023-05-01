@@ -29,7 +29,7 @@
 				src=" https://x-workz.in/static/media/Logo.cf195593dc1b3f921369.png"
 				alt="" width="80" height="48" class="d-inline-block align text-top">
 
-				<a href="index.jsp" class="btn btn-warning">Home</a>
+				<a href="PasswordSuccess.jsp" class="btn btn-warning">Home</a>
 				 <a href="SignIn.jsp" class="btn btn-warning">SignIn</a>
 				
 				<span style="color: white;">Welcome:${userID}</span>
@@ -41,7 +41,7 @@
 
 <form action="technology" method="post">
 
-User Id<input value="${dto.userId}" readonly="readonly" name="userId"/>
+<br>
 
 <table>
 
@@ -72,12 +72,12 @@ User Id<input value="${dto.userId}" readonly="readonly" name="userId"/>
 
 <tr>
 <td>Support From</td>
-<td><input type="text" name="supportFrom" value="${entity.supportFrom}"/></td>
+<td><input type="date" name="supportFrom" value="${entity.supportFrom}"/></td>
 <tr>
 
 <tr>
 <td>Support To</td>
-<td><input type="text" name="supportTo" value="${entity.supportTo}"/></td>
+<td><input type="date" name="supportTo" value="${entity.supportTo}"/></td>
 <tr>
 
 <tr>

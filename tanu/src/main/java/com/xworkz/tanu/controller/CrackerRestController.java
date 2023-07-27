@@ -3,6 +3,8 @@ package com.xworkz.tanu.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -22,12 +24,17 @@ import com.xworkz.tanu.Dto.CrackerDto;
 import com.xworkz.tanu.entity.CrackerEntity;
 import com.xworkz.tanu.service.CrackerService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @RestController
 @RequestMapping( path = "/cracker", produces = MediaType.APPLICATION_JSON_VALUE)
 public class CrackerRestController {
 	
 	@Autowired
 	private CrackerService crackerService;
+	
+	//private static final Logger LOGGER = LoggerFactory.getLogger(CrackerRestController.class);
 	
 	public CrackerRestController() {
 		System.out.println("Created " + this.getClass().getSimpleName());
@@ -37,6 +44,9 @@ public class CrackerRestController {
 	public CrackerDto onGet(CrackerDto dto) {
 		System.out.println("Running onGet in CrackerRestController");
 		System.out.println("creckerDto" + dto);
+		log.info("Logging services started");
+		log.info("please check carefully");
+		log.info("Its for debugging purpose");
 		CrackerDto crackerDto = new CrackerDto(1, "Rocket", "Standard", 45D);
 		return crackerDto;
 	}
